@@ -10,17 +10,15 @@
   "scripts": {
     "dev": "webpack --watch",
     "test": "jest",
-    "lint": "eslint src/**/*.ts",
+    "style": "prettier --write {src,test}/**/*.{ts,js}",
+    "lint": "eslint {src,test}/**/*.{ts,js}",
     "lint:fix": "npm run lint -- --fix",
     "build": "webpack"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run style && npm run lint"
     }
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
   },
   "license": "MIT",
   "dependencies": {},
@@ -31,9 +29,11 @@
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.4.2",
-    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
     "ts-jest": "^26.3.0",
     "ts-loader": "^8.0.3",
     "typescript": "^4.0.2",
